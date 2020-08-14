@@ -27,7 +27,12 @@ jobs:
         
         - if: steps.cache.outputs.cache-hit != 'true'
           run: npm ci
-        
-        - uses: sma11black/hexo-action@v1.0.2
+        - run: npm run build
+        - uses: peaceiris/actions-gh-pages@v3
           with:
-              deploy_key: ${{ secrets.DEPLOY_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          external_repository: Coolapk-Fan/wiki
+          publish_dir: ./public
+          publish_branch: master
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'

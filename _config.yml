@@ -3,11 +3,15 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 酷安维基
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
+    - 酷安
+    - 维基
+    - Coolapk
+    - Wiki
+author: Coolapk-Fan
 language: zh-CN
 timezone: ''
 
@@ -106,4 +110,6 @@ theme: Wikitten
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: git
+  repo: 
+  branch: master
