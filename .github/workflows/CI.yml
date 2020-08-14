@@ -22,6 +22,7 @@ jobs:
         
         - name: 更新 Node 模块
           run: |
+              npm install hexo --save
               npm update
         
         - name: 设置SSH私钥
