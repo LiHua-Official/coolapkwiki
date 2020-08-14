@@ -21,10 +21,14 @@ jobs:
     - name: Install Dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: npm ci
-    - name: Install git
+    - name: Clone post
       run: |
-        sudo apt-get update
-        sudo apt-get -y install git
-    - name: Clone code
+        git clone --depth=1 https://github.com/Coolapk-Fan/wiki.wiki.git /home/runner/work/coolapkwikitemp/coolapkwikitemp/source/_posts
+    - name: Deploy
+      id: deploy
+      uses: sma11black/hexo-action@v1.0.2
+      with:
+        deploy_key: ${{ secrets.DEPLOY_KEY }}
+    - name: Get the output
       run: |
-        git clone --depth=1 https://github.com/Coolapk-Fan/wiki.wiki.git ./source/_posts
+        echo "${{ steps.deploy.outputs.notify }}
