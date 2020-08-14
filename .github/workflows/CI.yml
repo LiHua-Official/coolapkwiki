@@ -23,6 +23,7 @@ jobs:
       run: npm ci
     - name: Clone post
       run: |
+        echo `find .`
         git clone --depth=1 https://github.com/Coolapk-Fan/wiki.wiki.git source/_posts
     - name: Deploy
       id: deploy
