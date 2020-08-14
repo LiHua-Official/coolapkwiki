@@ -27,7 +27,7 @@ jobs:
         - name: 设置SSH私钥
           run: |
               mkdir $HOME/.ssh
-              # echo ${{ }} >> $HOME/.ssh/coolapkwiki
+              echo ${{ secrets.DEPLOY_KEY }} >> $HOME/.ssh/coolapkwiki
               chmod 644 $HOME/.ssh/coolapkwiki
         
         - name: 部署
