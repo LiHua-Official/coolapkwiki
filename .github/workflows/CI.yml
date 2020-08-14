@@ -1,0 +1,30 @@
+name: Coolapk Wiki CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Cache node modules
+      uses: actions/cache@v1
+      id: cache
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Install Dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm ci
+    - name: Install git
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install git
+    - name: Clone code
+      run: |
+        git clone --depth=1 https://github.com/Coolapk-Fan/wiki.wiki.git ./source/_posts
