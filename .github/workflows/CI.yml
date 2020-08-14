@@ -9,22 +9,19 @@ jobs:
 
     steps:
 
-        - name: 安装依赖
+        - uses: actions/checkout@v2
+        - name: 拉取文章
           run: |
-              sudo apt update
-              sudo apt install -y nodejs git
-        
-        - name: 拉取源码
-          run: |
-              git clone https://github.com/LiHua-Official/coolapkwikitemp.git
-              cd coolapkwikitemp
               git clone https://github.com/Coolapk-Fan/wiki.wiki.git source/_posts
-        
-        - name: 更新 Node 模块
-          run: |
-              npm install hexo --save
-              npm update
-        
+        - uses: actions/setup-node@v2-beta
+          with:
+              node-version: '12'
+              check-latest: true
+        - uses: actions/cache@v2
+          with:
+              path: ~/.npm
+              key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+              restore-keys: ${{ runner.os }}-node-
         - name: 设置SSH私钥
           env:
               DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
@@ -36,13 +33,9 @@ jobs:
 
         - name: 设置Git信息
           run: |
-              git config --global user.name 'github-actions[bot]'
-              git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+              git config user.name github-actions
+              git config user.email github-actions@github.com
         
         - name: 部署
           run: |
               hexo d --debug
-        
-        - name: 清理
-          run: |
-              rm -rf source/_posts
