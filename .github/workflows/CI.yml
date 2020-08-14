@@ -23,7 +23,7 @@ jobs:
       run: npm ci
     - name: Clone post
       run: |
-        git clone --depth=1 https://github.com/Coolapk-Fan/wiki.wiki.git /home/runner/work/coolapkwikitemp/coolapkwikitemp/source/_posts
+        git clone --depth=1 https://github.com/Coolapk-Fan/wiki.wiki.git source/_posts
     - name: Deploy
       id: deploy
       uses: sma11black/hexo-action@v1.0.2
