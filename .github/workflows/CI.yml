@@ -25,10 +25,18 @@ jobs:
               npm update
         
         - name: 设置SSH私钥
+          env:
+              DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
           run: |
-              mkdir $HOME/.ssh
-              echo ${{ secrets.DEPLOY_KEY }} > $HOME/.ssh/coolapkwiki
-              chmod 400 $HOME/.ssh/coolapkwiki
+              mkdir ~/.ssh
+              echo $DEPLOY_KEY > ~/.ssh/coolapkwiki
+              chmod 600 ~/.ssh/coolapkwiki
+              ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+        - name: 设置Git信息
+          run: |
+              git config --global user.name 'github-actions[bot]'
+              git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         
         - name: 部署
           run: |
