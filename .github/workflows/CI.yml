@@ -10,32 +10,25 @@ jobs:
     steps:
 
         - uses: actions/checkout@v2
-        - name: 拉取文章
-          run: |
-              git clone https://github.com/Coolapk-Fan/wiki.wiki.git source/_posts
+          with:
+              submodules: true
+
         - uses: actions/setup-node@v2-beta
           with:
               node-version: '12'
               check-latest: true
+        
         - uses: actions/cache@v2
+          id: cache
           with:
-              path: ~/.npm
+              path: node_modules
               key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
               restore-keys: ${{ runner.os }}-node-
-        - name: 设置SSH私钥
-          env:
-              DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-          run: |
-              mkdir ~/.ssh
-              echo $DEPLOY_KEY > ~/.ssh/coolapkwiki
-              chmod 600 ~/.ssh/coolapkwiki
-              ssh-keyscan github.com >> ~/.ssh/known_hosts
-
-        - name: 设置Git信息
-          run: |
-              git config user.name github-actions
-              git config user.email github-actions@github.com
         
-        - name: 部署
-          run: |
-              hexo d --debug
+        - name: Install Dependencies
+          if: steps.cache.outputs.cache-hit != 'true'
+          run: npm ci
+        
+        - uses: sma11black/hexo-action@v1.0.2
+          with:
+              deploy_key: ${{ secrets.DEPLOY_KEY }}
