@@ -8,32 +8,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Cache node modules
-      uses: actions/cache@v1
-      id: cache
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-    - name: Install Dependencies
-      if: steps.cache.outputs.cache-hit != 'true'
-      run: npm ci
-    - name: Update post
-      run: |
-          git submodule update
-          npm i hexo
-          hexo d
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-          deploy_key: ${{ secrets.DEPLOY_KEY }}
-          external_repository: ${{ secrets.REPO }}
-          publish_dir: ./public
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-    - name: Get the output
-      run: |
-        echo "${{ steps.deploy.outputs.notify }}
+
+        - name: 安装依赖
+          run: |
+              sudo apt update
+              sudo apt install -y nodejs git
+        
+        - name: 拉取源码
+          run: |
+              git clone https://github.com/LiHua-Official/coolapkwikitemp.git /opt/wiki
+              cd /opt/wiki
+              git clone https://github.com/Coolapk-Fan/wiki.wiki.git source/_posts
+        
+        - name: 更新 Node 模块
+          run: |
+              npm update
+        
+        - name: 设置SSH私钥
+          run: |
+              mkdir $HOME/.ssh
+              # echo ${{ }} >> $HOME/.ssh/coolapkwiki
+              chmod 644 $HOME/.ssh/coolapkwiki
+        
+        - name: 部署
+          run: |
+              hexo d --debug
+        
+        - name: 清理
+          run: |
+              rm -rf /opt/wiki/source/_posts
