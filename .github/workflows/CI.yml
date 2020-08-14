@@ -21,15 +21,17 @@ jobs:
     - name: Install Dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: npm ci
-    - name: Clone post
+    - name: Update post
       run: |
-        git clone --depth=1 https://github.com/Coolapk-Fan/wiki.wiki.git source/_posts
-        rm -rf source/_posts/.git
+          git
     - name: Deploy
-      id: deploy
-      uses: sma11black/hexo-action@v1.0.2
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        deploy_key: ${{ secrets.DEPLOY_KEY }}
+          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          external_repository: ${{ secrets.REPO }}
+          publish_dir: ./public
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
     - name: Get the output
       run: |
         echo "${{ steps.deploy.outputs.notify }}
