@@ -1,6 +1,6 @@
 name: Coolapk Wiki CI
 
-on: [push]
+on: push
 
 jobs:
   build:
@@ -16,8 +16,8 @@ jobs:
         
         - name: 拉取源码
           run: |
-              git clone https://github.com/LiHua-Official/coolapkwikitemp.git /opt/wiki
-              cd /opt/wiki
+              git clone https://github.com/LiHua-Official/coolapkwikitemp.git
+              cd coolapkwikitemp
               git clone https://github.com/Coolapk-Fan/wiki.wiki.git source/_posts
         
         - name: 更新 Node 模块
@@ -45,4 +45,4 @@ jobs:
         
         - name: 清理
           run: |
-              rm -rf /opt/wiki/source/_posts
+              rm -rf source/_posts
