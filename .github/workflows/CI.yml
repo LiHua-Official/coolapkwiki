@@ -11,7 +11,9 @@ jobs:
 
         - uses: actions/checkout@v2
           with:
-              submodules: true
+              submodules: false
+
+        - run:  git clone https://github.com/Coolapk-Fan/wiki.wiki.git source/_posts
 
         - uses: actions/setup-node@v2-beta
           with:
