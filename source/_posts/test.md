@@ -1,9 +1,9 @@
 ---
-title: {{ title }}
-date: {{ date }}
+title: test
 toc: true
-tags: 
-categories: 
+date: 2020-08-15 18:39:10
+tags:
+categories:
 ---
 
 
