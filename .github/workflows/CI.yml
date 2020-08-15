@@ -13,7 +13,9 @@ jobs:
           with:
               submodules: false
 
-        - run:  git clone https://github.com/Coolapk-Fan/wiki.wiki.git source/_posts
+        - run:  |
+          git clone https://github.com/Coolapk-Fan/wiki.wiki source/_posts
+          rm -rf source/_posts/.git
 
         - uses: actions/setup-node@v2-beta
           with:
