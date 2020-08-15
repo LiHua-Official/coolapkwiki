@@ -12,13 +12,11 @@ jobs:
     steps:
 
         - uses: actions/checkout@v2
-          with:
-              submodules: true
 
-        - run: |
-            cd source/_posts
-            git pull
-            cd ../..
+        - uses: actions/checkout@v2
+          with:
+              repository: Coolapk-Fan/wiki.wiki
+              path: source/_posts
 
         - uses: actions/setup-node@v2-beta
           with:
