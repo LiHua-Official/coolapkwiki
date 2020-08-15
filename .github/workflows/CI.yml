@@ -28,8 +28,6 @@ jobs:
         - if: steps.cache.outputs.cache-hit != 'true'
           run: npm ci
 
-        - run: npm run build
-        
         - uses: sma11black/hexo-action@v1.0.2
           with:
               deploy_key: ${{ secrets.DEPLOY_KEY }}
