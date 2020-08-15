@@ -32,7 +32,7 @@ jobs:
 
         - uses: peaceiris/actions-gh-pages@v3
           with:
-          github_token: ${{ secrets.COOLAPK_TOKEN }}
+          personal_token: ${{ secrets.COOLAPK_TOKEN }}
           external_repository: Coolapk-Fan/wiki
           publish_dir: ./public
           publish_branch: master
