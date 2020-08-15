@@ -1,8 +1,8 @@
 name: Coolapk Wiki CI
 
-on: push
-# schedule:
-#      - cron:  '*/7 * * * *'
+on:
+    schedule:
+        - cron:  '*/15 6-22 * * *'
 
 jobs:
   build:
