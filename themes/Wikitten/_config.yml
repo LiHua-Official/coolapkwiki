@@ -60,7 +60,7 @@ history_control: # make you wiki has history version control in page
     server_link: https://github.com # recommend use GitHub https://github.com
     user: Coolapk-Fan
     repertory: wiki.wiki
-    branch: writing
+    branch: 
 
 # Comment
 comment:
