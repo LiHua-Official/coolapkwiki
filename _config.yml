@@ -111,5 +111,5 @@ theme: Wikitten
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: 
+  repo: git@github.com:Coolapk-Fan/wiki.git
   branch: master
