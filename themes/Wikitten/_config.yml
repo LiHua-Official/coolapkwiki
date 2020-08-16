@@ -36,10 +36,10 @@ customize:
 widgets: # default use category only
     # - category
     # - recent_posts
-    - archive
+    # - archive
     # - tag
     # - tagcloud
-    # - links
+    - links
     
 # Excerpt 
 ## Auto creat excerpt with not <!--more-->
@@ -60,7 +60,7 @@ history_control: # make you wiki has history version control in page
     server_link: https://github.com # recommend use GitHub https://github.com
     user: Coolapk-Fan
     repertory: wiki.wiki
-    branch: 
+    branch: master
 
 # Comment
 comment:
