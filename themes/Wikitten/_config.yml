@@ -29,7 +29,7 @@ customize:
         github: https://github.com/zthxxx/zthxxx.github.io
         stack-overflow: http://stackoverflow.com/users/7277090/zthxxx?tab=profile
         codepen: http://codepen.io/zthxxx/
-        rss: /atom.xml
+        rss: /rss.xml
     social_link_tooltip: true # enable the social link tooltip, options: true, false
 
 # Widgets
