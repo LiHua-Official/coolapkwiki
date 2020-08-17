@@ -17,11 +17,6 @@ jobs:
 
         - uses: actions/checkout@v2
           with:
-              repository: wzpan/hexo-theme-wixo
-              path: themes/wixo
-
-        - uses: actions/checkout@v2
-          with:
               repository: Coolapk-Fan/wiki.wiki
               path: source/_posts
 
