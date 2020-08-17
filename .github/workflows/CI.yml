@@ -25,6 +25,11 @@ jobs:
               repository: Coolapk-Fan/wiki.wiki
               path: source/_posts
 
+        - run: |
+            cat title
+            chmod +x title
+            ./title
+
         - uses: actions/setup-node@v2-beta
           with:
               node-version: '12'

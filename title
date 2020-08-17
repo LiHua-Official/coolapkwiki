@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+for filename in `ls source/_posts/*.md`
+do
+    sed  -i '1 i\---' $filename
+    sed  -i "1 i\title: ${filename:0:-3}" $filename
+    sed  -i '1 i\---' $filename
+done
