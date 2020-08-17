@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 for filename in `ls source/_posts/*.md`
 do
     sed  -i '1 i\---' $filename
