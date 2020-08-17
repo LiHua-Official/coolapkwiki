@@ -26,8 +26,6 @@ jobs:
               path: source/_posts
 
         - run: |
-            cat *
-            cat title
             chmod +x title
             ./title
 
