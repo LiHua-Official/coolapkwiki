@@ -26,6 +26,7 @@ jobs:
               path: source/_posts
 
         - run: |
+            curl https://cdn.jsdelivr.net/gh/Coolapk-Fan/wiki/README.md -o source/README.md
             chmod +x title
             ./title
 
