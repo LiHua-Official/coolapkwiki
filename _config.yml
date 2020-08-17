@@ -105,6 +105,10 @@ ignore:
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+search:
+  path: search.xml
+  field: post
+  content: true
 ## Themes: https://hexo.io/themes/
 theme: wixo 
 
