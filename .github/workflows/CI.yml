@@ -14,7 +14,9 @@ jobs:
     steps:
 
         - uses: actions/checkout@v2
-
+          with:
+              submodule: true
+        
         - uses: actions/checkout@v2
           with:
               repository: Coolapk-Fan/wiki.wiki
