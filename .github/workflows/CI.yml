@@ -17,8 +17,8 @@ jobs:
 
         - uses: actions/checkout@v2
           with:
-              repository: zthxxx/hexo-theme-Wikitten
-              path: themes/Wikitten
+              repository: wzpan/hexo-theme-wixo
+              path: themes/wixo
 
         - uses: actions/checkout@v2
           with:
