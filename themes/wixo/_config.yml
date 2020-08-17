@@ -3,5 +3,5 @@ fancybox: true
 favicon: favicon.png
 inverse_sort: true  # Whether to sort all notes inversely
 fold: true  # Whether to fold all the notebooks initially
-scratch_name: Scratch  # Notebook name of posts without categories variables
+scratch_name: 查找Wiki页面  # Notebook name of posts without categories variables
 google_analytics:
