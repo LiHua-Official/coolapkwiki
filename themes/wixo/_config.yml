@@ -1,4 +1,4 @@
-rss: rss.xml
+rss: atom.xml
 fancybox: true
 favicon: favicon.png
 inverse_sort: false  # Whether to sort all notes inversely
